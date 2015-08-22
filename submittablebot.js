@@ -10,7 +10,7 @@ var http = require('http');
 	    url: 'https://api.submittable.com/v1/submissions', //URL to hit
 	    method: 'GET', //Specify the method
 	    headers: { //We can define headers too
-	        'Authorization': 'Basic ' + SUBMITTABLE_PATH;
+	        'Authorization': 'Basic ' + process.env.SUBMITTABLE_PATH
 	    }
 	}, function(error, response, body){
 	    if(error) {
