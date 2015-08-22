@@ -45,6 +45,7 @@ module.exports = function (req, res, next) {
 
     } else if (status !== 200) {
       // inform user that our Incoming WebHook failed
+      //I AM LINE 48 **********8
       return next(new Error('Incoming WebHook: ' + status + ' ' + body));
 
     } else {
@@ -60,8 +61,8 @@ function roll (min, max) {
 
 
 function send (payload, callback) {
-  var path = process.env.INCOMING_WEBHOOK_PATH;
-  var uri = 'https://hooks.slack.com/services' + path;
+  var uri = process.env.INCOMING_WEBHOOK_PATH;
+  // var uri = 'https://hooks.slack.com/services' + path;
 
   request({
     uri: uri,
