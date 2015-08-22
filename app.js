@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var hellobot = require('./hellobot');
 var dicebot = require('./dicebot');
+var submittablebot = require('./submittablebot')
 
 
 
@@ -11,6 +12,7 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res){res.status(200).json("it's working")});
+app.get('/submissions', submittablebot);
 app.post('/hello', hellobot);
 app.post('/roll', dicebot);
 
