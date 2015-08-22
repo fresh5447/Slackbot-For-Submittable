@@ -2,7 +2,7 @@
 
 ##This is a work in progress but the goal is to view and receive important ##Submittable updates from within Slack.
 
-*Currently we setup a slash `/submittables' which will hit Submittables API and
+*Currently we setup a slash `/submittables` which will hit Submittables API and
 return all Submissions.*
 
 ##Production Endpoint: https://slacky-mcslackington.herokuapp.com/
