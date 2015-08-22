@@ -1,0 +1,15 @@
+{
+  "name": "slackbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  	"express": "^4.x.x",
+  	"body-parser": "^1.x.x"
+  	},
+  "author": "",
+  "license": "ISC"
+}
