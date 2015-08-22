@@ -37,5 +37,23 @@ module.exports = function(req, res, next){
 		return res.status(200).end();
 	}
 
+	function send (payload, callback) {
+  	var uri = "https://hooks.slack.com/services/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";
+  
+
+		  request({
+		    uri: uri,
+		    method: 'POST',
+		    body: JSON.stringify(payload)
+		  }, function (error, response, body) {
+		    if (error) {
+		      return callback(error);
+		    }
+
+		    callback(null, response.statusCode, body);
+		  });
+		}
+
 }
+
 
