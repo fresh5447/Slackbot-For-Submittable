@@ -14,7 +14,7 @@ app.get('/', function(req, res){res.status(200).json("it's working")});
 app.post('/submissions', submittablebot);
 app.post('/hello', hellobot);
 app.post('/roll', dicebot);
-app.post('/practicebot', practicebot);
+app.post('/practice', practicebot);
 
 app.use(function(err, req, res, next){
 	console.error(err.stack);
