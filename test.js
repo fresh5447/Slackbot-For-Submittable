@@ -1,4 +1,4 @@
-var data = [ { category:
+var dataItems = [ { category:
      { url: '/v1/categories/45715',
        category_id: 45715,
        name: 'Admission Application',
@@ -327,11 +327,29 @@ var data = [ { category:
     title: '0010',
     submission_content: null,
     status: 'In-Progress',
-    is_archived: false } ]
+    is_archived: false } ];
 
-    for (var i = 0; i < data.length; i++) {
-      console.log(data[i].submitter)
+var people = [];
+
+
+
+  for (var i = 0; i < dataItems.length; i++) {
+        var person = new Object();
+        person.first_name = dataItems[i].submitter.first_name;
+        person.last_name = dataItems[i].submitter.last_name;
+        person.full_name = dataItems[i].submitter.first_name + " " + dataItems[i].submitter.last_name;
+        person.email = dataItems[i].submitter.email;
+        person.status = dataItems[i].status;
+        people.push(person);
+      };
+  for (var i = 0; i < people.length; i++) {
+    if (people[i].first_name !== null && people[i].status !== "Declined") {
+    countonsole.log("Name: " + people[i].full_name + " Status: " + people[i].status);
     };
+  };
 
-    console.log(data.length + "THIS MANY ITEMS");
-    console.log(data[3].submitter);
+  var payload.text(people){
+    for (var i = 0; i < people.length; i++) {
+      people[i]
+    };
+  }
