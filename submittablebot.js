@@ -14,13 +14,14 @@ var people = [];
 
 
 //  GET ALL SUBMISSIONS FROM SUBMITTABLE
+//  AND POST THE PAYLOAD TO SLACK
 request({
     url: 'https://api.submittable.com/v1/submissions',
     method: 'GET', //Specify the method
     headers: { //We can define headers too
         'Authorization': 'Basic ' + process.env.SUBMITTABLE_PATH
     }
-}, function(error, response, body) {
+    }, function(error, response, body) {
     if (error) {
         console.log(error);
     } else {
@@ -45,7 +46,7 @@ request({
         url: process.env.SUBMIT_POST_PATH, //URL to hit
         method: 'POST', //Specify the method
         body: JSON.stringify(payload)
-    }, function(error, response, body) {
+        }, function(error, response, body) {
         if (error) {
             console.log(error);
         } else {
@@ -57,10 +58,11 @@ request({
 
 
 module.exports = function(req, res, next) {
+    console.log("SHOW UP IN HERE");
 
-    if (people) {
+    if (payload) {
         //all hooks post as slackbot, even if the name appears differently in chat.
-        return res.status(200).json(people);
+        return res.status(200).json(payload);
     } else {
         return res.status(200).end();
     }
