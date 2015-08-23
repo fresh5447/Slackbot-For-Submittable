@@ -18,7 +18,7 @@ request({
     url: 'https://api.submittable.com/v1/submissions',
     method: 'GET', //Specify the method
     headers: { //We can define headers too
-        'Authorization': 'Basic ' + env.process.SUBMITTABLE_PATH
+        'Authorization': 'Basic ' + process.env.SUBMITTABLE_PATH
     }
 }, function(error, response, body) {
     if (error) {
@@ -42,7 +42,7 @@ request({
         };
     };
     request({
-        url: 'https://hooks.slack.com/services/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', //URL to hit
+        url: process.env.SUBMIT_POST_PATH, //URL to hit
         method: 'POST', //Specify the method
         body: JSON.stringify(payload)
     }, function(error, response, body) {
