@@ -9,6 +9,18 @@ module.exports = function (req, res, next) {
   botPayload.channel = req.body.channel_id;
   botPayload.icon_emoji = ':game_die:';
 
+	  if (req.body.text === "hello") {
+    // parse roll type if specified
+    botPayload.text = "you typed hello";
+    } else if (req.body.text === "test") {
+    botPayload.text = "you typed test"
+
+    } else {
+      // send error message back to user if input is bad
+      return res.status(200).send('<number>d<sides>');
+    }
+  }
+
 
   // send dice roll
   send(botPayload, function (error, status, body) {
