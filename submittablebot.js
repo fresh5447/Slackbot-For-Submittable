@@ -39,7 +39,7 @@ request({
         };
         people.push(person);
         for (var i = 0; i < people.length; i++) {
-            payload.text += "Name: " + (people[i].full_name).toString() + " Status: " + (people[i].status).toString() + "\n";
+            payload.text += (people[i].full_name).toString() + " Status: " + (people[i].status).toString() + "\n";
         };
     };
     request({
