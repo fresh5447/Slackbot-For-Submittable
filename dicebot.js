@@ -1,5 +1,7 @@
 var request = require('request');
 
+console.log("Crazy one");
+
 module.exports = function (req, res, next) {
   // default roll is 2d6
   var matches;
@@ -8,6 +10,8 @@ module.exports = function (req, res, next) {
   var rolls = [];
   var total = 0;
   var botPayload = {};
+
+  console.log("Crazy two");
 
   if (req.body.text) {
     // parse roll type if specified
@@ -54,7 +58,7 @@ module.exports = function (req, res, next) {
   });
 }
 
-
+console.log("Crazy three");
 function roll (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }

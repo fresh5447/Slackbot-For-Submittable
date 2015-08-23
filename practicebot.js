@@ -1,22 +1,34 @@
 var request = require('request');
 
-module.exports = function(req, res, next){
+module.exports = function (req, res, next) {
 
-	var userName = req.body.user_name;
-	var paylaod = {
-		text: 'Hello, ' + userName + '!'
-	};
+	botPayload = {}
+  // write response message and add to payload
+  botPayload.text = "I hope this response comes through";
+	botPayload.username = 'practice';
+  botPayload.channel = req.body.channel_id;
+  botPayload.icon_emoji = ':game_die:';
 
-	if (userName !== 'slackbot') {
-		//all hooks post as slackbot, even if the name appears differently in chat.
-		return res.status(200).json(paylaod);
-	} else {
-		return res.status(200).end();
-	}
 
+  // send dice roll
+  send(botPayload, function (error, status, body) {
+  	console.log(botPayload);
+    if (error) {
+      return next(error);
+
+    } else if (status !== 200) {
+      // inform user that our Incoming WebHook failed
+      //I AM LINE 48 **********8
+      return next(new Error('Incoming WebHook: ' + status + ' ' + body));
+
+    } else {
+      return res.status(200).end();
+    }
+  });
 }
 
 function send (payload, callback) {
+
   var uri = "https://hooks.slack.com/services/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";
 
   request({
