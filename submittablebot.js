@@ -1,8 +1,6 @@
-var express = require('express');
+require('dotenv').load();
+var peepsFun = require('./peopleHelpers.js');
 var request = require('request');
-var router = express.Router();
-var http = require('http');
-
 var payload = {};
 
 payload.channel = "#slack-development";
@@ -25,6 +23,7 @@ request({
     if (error) {
         console.log(error);
     } else {
+        console.log("I AM HERE")
         var data = JSON.parse(response.body);
         var items = data.items;
         // EXTRACT PEOPLE FROM DATA OBJECT AND SAVE AS PERSON
@@ -36,8 +35,7 @@ request({
             person.email = items[i].submitter.email;
             person.status = items[i].status;
             people.push(person);
-        };
-        people.push(person);
+        }
         for (var i = 0; i < people.length; i++) {
             payload.text += (people[i].full_name).toString() + " Status: " + (people[i].status).toString() + "\n";
         };
