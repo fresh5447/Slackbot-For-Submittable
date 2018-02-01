@@ -11,4 +11,4 @@ var readInput = function(input){
 		};
 }
 
-readInput("AlL");
+readInput("All");
